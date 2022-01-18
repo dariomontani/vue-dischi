@@ -1,15 +1,29 @@
 <template>
   <div class="container">
-      
+      <Card />
   </div>
 </template>
 
 <script>
+import Card from './Card.vue'
+
 export default {
     name: "Main",
+
+    components:{
+        Card,
+    },
+
     data(){
         return{
-            queryPath: "https://flynn.boolean.careers/exercises/api/array/music",
+        }
+    },
+
+    methods: {
+        getCards () {
+            axios.get('https://flynn.boolean.careers/exercises/api/array/music')
+            .then()
+            .catch()
         }
     }
 }
