@@ -1,34 +1,39 @@
 <template>
-  <div class="container">
-      <Card />
-  </div>
+    <main class="container mt-5">
+        <div class="row row-cols-5">
+            <Card />
+        </div>
+    </main>
 </template>
 
 <script>
-import Card from './Card.vue'
+import axios from 'axios';
+import Card from './Card.vue';
 
 export default {
-    name: "Main",
-
-    components:{
+    name: 'Main',
+    components: {
         Card,
     },
-
     data(){
         return{
+            disc:[],
+            query:'https://flynn.boolean.careers/exercises/api/array/music',
         }
     },
+    created() {
+        axios.get(this.query)
+        .then((result) => {
+            console.log(result);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    },
+};
 
-    methods: {
-        getCards () {
-            axios.get('https://flynn.boolean.careers/exercises/api/array/music')
-            .then()
-            .catch()
-        }
-    }
-}
 </script>
 
-<style lang="scss">
-    @import "~bootstrap/scss/bootstrap";
+<style>
+
 </style>
